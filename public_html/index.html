@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Opdracht 7</title>
         <meta charset="UTF-8">
         <meta name="naam" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="wibren.css">
@@ -14,8 +14,7 @@
     <body>
         <div>
             <h1>Opdracht 7</h1>
-            <h2>Kan een aantal seconden duren voor het resultaat verschijnt.</h2>
-            <h3>als je een error krijgt log dan eerst eens aan op de api, de authenticatie lijkt niet steeds te werken.</h3>
+            <h2>Even wachten voor de data verschijnt, log zeker ook in op de API voor de zekerheid.</h2>
             <table id="tabel">
                 <tr>              
                     <th>Naam drone</th>
@@ -34,7 +33,7 @@
                 "method": 'GET',
                 "dataType": "json",
                 "headers": {
-                    "authorization": "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="}
+                    "authorization": "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="}      //base64 encoded authenticatie details meegeven in de header om in te loggen op de api.
             }).done(function (drones) {
 
                 drones.forEach(function (drones) {
