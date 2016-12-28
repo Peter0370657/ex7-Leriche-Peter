@@ -27,50 +27,39 @@
             // via lijn  7 is jQuery geladen, kan nu dus gebruikt worden.
             var baselink = "https://web-ims.thomasmore.be/datadistribution/API/2.0/";
             var endlink = "?format=json";
-            
-            var settings = function(url){
+
+            var settings = function (url) {
                 this.url = url;
-                this.method="GET";
-                this.dataType="json";
+                this.method = "GET";
+                this.dataType = "json";
                 this.headers = {
-                    "authorization" : "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="
+                    "authorization": "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="
                 };
             };
-            
-            var drones_top_settings = new settings(baselink+"drones/"+endlink);
+
+            var drones_top_settings = new settings(baselink + "drones/" + endlink);
             $.ajax(drones_top_settings).done(function (drones) {
-                drones.forEach(function (drones){   //deze foreach gaat al de 
-                    var drones_id_settings = new settings(baselink+"drones/"+drones.id+endlink);
-                    $.ajax(drones_id_settings).done(function (drone_details){
-                        var drones_file_settings = new settings(baselink+"files?drone_id.is="+drone_details.id+endlink);
-                        $.ajax(drones_file_settings).done(function(files){
-                            files.forEach(function(files){
-                               var drones_file_detail_settings = new settings (baselink+"files/"+files.id+endlink);
-                               $.ajax(drones_file_detail_settings).done(function (file_details){
-                                   $("#tabel").append('<tr>' +
-                                    '<td>'+droneDetails.name+'</td>' +
-                                    '<td>'+droneDetails.mac_address+'</td>' +
-                                    '<td>'+files.id+'</td>' +
-                                    '<td>'+fileDetails.date_first_record+'</td>' +
-                                    '<td>'+fileDetails.date_last_record+'</td></tr>'
-                                    );
-                               }).fail(function(){
-                                   
-                               });
-                            }).fail(function() {
-                                alert('An error has occurred - you may not have been entered');
+                drones.forEach(function (drones) {   //deze foreach gaat al de 
+                    var drones_id_settings = new settings(baselink + "drones/" + drones.id + endlink);
+                    $.ajax(drones_id_settings).done(function (drone_details) {
+                        var drones_file_settings = new settings(baselink + "files?drone_id.is=" + drone_details.id + endlink);
+                        $.ajax(drones_file_settings).done(function (files) {
+                            files.forEach(function (files) {
+                                var drones_file_detail_settings = new settings(baselink + "files/" + files.id + endlink);
+                                $.ajax(drones_file_detail_settings).done(function (file_details) {
+                                    $("#tabel").append('<tr>' +
+                                            '<td>' + droneDetails.name + '</td>' +
+                                            '<td>' + droneDetails.mac_address + '</td>' +
+                                            '<td>' + files.id + '</td>' +
+                                            '<td>' + fileDetails.date_first_record + '</td>' +
+                                            '<td>' + fileDetails.date_last_record + '</td></tr>'
+                                            );
+                                }).fail(function () {});
                             });
                         });
-                        
-                    }).fail(function() {
-                          alert('An error has occurred - you may not have been entered');
                     });
-                    
                 });
-            }).fail(function() {
-                alert('An error has occurred - you may not have been entered');
-            }); 
-           
+            });
         </script>
 
     </body>
