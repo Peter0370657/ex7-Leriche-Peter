@@ -41,8 +41,25 @@
             $.ajax(drones_top_settings).done(function (drones) {
                 drones.forEach(function (drones){   //deze foreach gaat al de 
                     var drones_id_settings = new settings(baselink+"drones/"+drones.id+endlink);
-                    $.ajax(drones_id_settings).done(function (){
-                      
+                    $.ajax(drones_id_settings).done(function (drone_details){
+                        var drones_file_settings = new settings(baselink+"files?drone_id.is="+drone_details.id+endlink);
+                        $.ajax(drones_file_settings).done(function(files){
+                            files.forEach(function(files){
+                               var drones_file_detail_settings = new settings (baselink+"files/"+files.id+endlink);
+                               $.ajax(drones_file_detail_settings).done(function (file_details){
+                                   $("#tabel").append('<tr>' +
+                                    '<td>'+droneDetails.name+'</td>' +
+                                    '<td>'+droneDetails.mac_address+'</td>' +
+                                    '<td>'+files.id+'</td>' +
+                                    '<td>'+fileDetails.date_first_record+'</td>' +
+                                    '<td>'+fileDetails.date_last_record+'</td></tr>'
+                                    );
+                               }).fail(function(){
+                                   
+                               });
+                            });
+                        });
+                        
                     });
                     
                 });
