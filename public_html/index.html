@@ -38,7 +38,7 @@
                 }
             }).done(function (drones) {
                 
-                drones.forEach(function (drones){
+                drones.forEach(function (drones){   //deze foreach gaat al de 
                     $.ajax({
                         "url": link+drones.id+endlink,   //later misschien eens vervangen door drones.url kan misschien ook werken.
                         "method": "GET",
@@ -46,7 +46,9 @@
                         "headers": {
                             "authorization": "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="
                         }
+                        
                     })
+                    console.log('test');
                 });
             });
                 
