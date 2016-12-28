@@ -48,11 +48,11 @@
                                 var drones_file_detail_settings = new settings(baselink + "files/" + files.id + endlink);
                                 $.ajax(drones_file_detail_settings).done(function (file_details) {
                                     $("#tabel").append('<tr>' +
-                                            '<td>' + droneDetails.name + '</td>' +
-                                            '<td>' + droneDetails.mac_address + '</td>' +
+                                            '<td>' + drone_details.name + '</td>' +
+                                            '<td>' + drone_details.mac_address + '</td>' +
                                             '<td>' + files.id + '</td>' +
-                                            '<td>' + fileDetails.date_first_record + '</td>' +
-                                            '<td>' + fileDetails.date_last_record + '</td></tr>'
+                                            '<td>' + file_details.date_first_record + '</td>' +
+                                            '<td>' + file_details.date_last_record + '</td></tr>'
                                             );
                                 }).fail(function () {
                                     
