@@ -24,7 +24,7 @@
             </table>
         </div>
         <script>
-            // via lijn  9 is jQuery geladen, kan nu dus gebruikt worden.
+            // via lijn  7 is jQuery geladen, kan nu dus gebruikt worden.
             var link = "https://web-ims.thomasmore.be/datadistribution/API/2.0/drones/";
             var endlink = "?format=json";
             
@@ -36,26 +36,13 @@
                     "authorization" : "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="
                 };
             };
-
             
-            $.ajax({
-                "url": link+endlink,
-                "method": "GET",
-                "dataType":"json",
-                "headers": {
-                    "authorization": "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="
-                }
-            }).done(function (drones) {
-                
+            var drones_top = new settings(link+endlink);
+            $.ajax(drones_top).done(function (drones) {
                 drones.forEach(function (drones){   //deze foreach gaat al de 
-                    $.ajax({
-                        "url": link+drones.id+endlink,   //later misschien eens vervangen door drones.url kan misschien ook werken.
-                        "method": "GET",
-                        "dataType":"json",
-                        "headers": {
-                            "authorization": "Basic aW1zOno1MTJtVDRKeVgwUExXZw=="
-                        }
-                    });
+                    var drones_id = new settings(link+drones.id+endlink);
+                    $.ajax(drones_id);
+                    console.log(drones_id);
                 });
             });
                 
