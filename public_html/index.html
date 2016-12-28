@@ -39,7 +39,7 @@
 
             var drones_top_settings = new settings(baselink + "drones/" + endlink);
             $.ajax(drones_top_settings).done(function (drones) {
-                drones.forEach(function (drones) {   //deze foreach gaat al de 
+                drones.forEach(function (drones) {   
                     var drones_id_settings = new settings(baselink + "drones/" + drones.id + endlink);
                     $.ajax(drones_id_settings).done(function (drone_details) {
                         var drones_file_settings = new settings(baselink + "files?drone_id.is=" + drone_details.id + endlink);   //fout zithier denk ik
@@ -64,10 +64,12 @@
                         });
                     }).fail(function(){
                         alert('error op ajax 2');
+                        console.log(drones_id_settings );
                     });
                 });
             }).fail(function(){
                 alert('error op ajax 1');
+                console.log(drones_top_settings);
             });
         </script>
 
