@@ -54,11 +54,19 @@
                                             '<td>' + fileDetails.date_first_record + '</td>' +
                                             '<td>' + fileDetails.date_last_record + '</td></tr>'
                                             );
-                                }).fail(function () {});
+                                }).fail(function () {
+                                    
+                                });
                             });
+                        }).fail(function(){
+                            alert('error op ajax 3');
                         });
+                    }).fail(function(){
+                        alert('error op ajax 2');
                     });
                 });
+            }).fail(function(){
+                alert('error op ajax 1');
             });
         </script>
 
