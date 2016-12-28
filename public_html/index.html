@@ -42,7 +42,7 @@
                 drones.forEach(function (drones) {   
                     var drones_id_settings = new settings(baselink + "drones/" + drones.id + endlink);
                     $.ajax(drones_id_settings).done(function (drone_details) {
-                        var drones_file_settings = new settings(baselink + "files?drone_id.is=" + drone_details.id + "&format=json");   //fout zithier denk ik
+                        var drones_file_settings = new settings(baselink + "files?drone_id.is=" + drone_details.id + "&format=json");
                         $.ajax(drones_file_settings).done(function (files) {
                             files.forEach(function (files) {
                                 var drones_file_detail_settings = new settings(baselink + "files/" + files.id + endlink);
@@ -60,16 +60,13 @@
                             });
                         }).fail(function(){
                             alert('error op ajax 3');
-                           // console.log(drones_file_settings);
                         });
                     }).fail(function(){
                         alert('error op ajax 2');
-                      //  console.log(drones_id_settings );
                     });
                 });
             }).fail(function(){
                 alert('error op ajax 1');
-               // console.log(drones_top_settings);
             });
         </script>
 
